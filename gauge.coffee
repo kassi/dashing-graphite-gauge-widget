@@ -1,4 +1,4 @@
-class Dashing.Timer extends Dashing.Widget
+class Dashing.Gauge extends Dashing.Widget
 
   displayError:(msg) ->
     $(@node).find(".error").show()
