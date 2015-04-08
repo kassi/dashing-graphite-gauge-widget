@@ -101,10 +101,6 @@ class Dashing.Gauge extends Dashing.Widget
     console.log data if @debug
     dataLatest = data[0].datapoints[data[0].datapoints.length-1][0] || 0
     change_rate = 0
-    # change_rate = dataLatest - data[0].datapoints[data[0].datapoints.length-2][0] || 0
-    # dataAverage = Math.floor(array_values_average(_.compact(removeTimestampFromTuple(data[0].datapoints))))
-    # dataAverage_minus1w = Math.floor(array_values_average(_.compact(removeTimestampFromTuple(data[1].datapoints))))
-    # change_rate = Math.floor(dataAverage/dataAverage_minus1w*100) - 100
 
     $(@node).find(".change-rate i").removeClass("icon-arrow-up").removeClass("icon-arrow-down")
 
@@ -150,7 +146,7 @@ class Dashing.Gauge extends Dashing.Widget
 
   findLargestIndexSmallerThanValue = (arr, val) ->
     _.findLastIndex(arr, (elem) -> elem[0] <= val)
-  
+
   getColorFromValue = (colors, val) ->
     index = findLargestIndexSmallerThanValue(colors, val)
     if colors.length == index + 1
