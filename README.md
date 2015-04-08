@@ -10,7 +10,7 @@ This is a modified clone of https://github.com/edasque/dashing-graphite-text-wid
 ## Installation
 
 - Download [Moment.js](http://momentjs.com/downloads/moment.min.js), [jquery.sparklines.js](http://omnipotent.net/jquery.sparkline/#s-about) and [lodash.min.js](https://raw.githubusercontent.com/lodash/lodash/2.4.1/dist/lodash.min.js) and place them in the `assets/javascripts` folder
-- Finally create a dashboard and use the Timer widget. Dont' forget to set your timer, title & graphite_host:
+- Finally create a dashboard and use the Gauge widget. Don't forget to set your title, graphite_host and metric:
 
 ```html
 <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
@@ -20,3 +20,10 @@ This is a modified clone of https://github.com/edasque/dashing-graphite-text-wid
 </li>
 ```
 
+## Authors
+
+Based on [Erik Dasque's](https://github.com/edasque) graphite text widget
+
+Adapted by Karsten Silkenbäumer
+
+[![endorse](http://api.coderwall.com/ksi/endorsecount.png)](http://coderwall.com/ksi)
