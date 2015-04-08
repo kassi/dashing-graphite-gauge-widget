@@ -130,12 +130,8 @@ class Dashing.Gauge extends Dashing.Widget
       $(@node).find(".value").text("N/A").fadeOut().fadeIn()
     else
       $(@node).find(".value").html("#{dataLatest}<span style='font-size:.3em;'>#{unit}</span>").fadeOut().fadeIn()
-      console.log "dataLatest" if @debug
-      console.log dataLatest if @debug
       colors = _.map(@get('colors').split(","), (elem) -> elem.split(":"))
-      console.log colors if @debug
       color = getColorFromValue(colors, dataLatest)
-      console.log color if @debug
       $(@node).fadeOut().css('background-color', color).fadeIn()
 
     $(@node).find(".change-rate span").text("#{change_rate}")
