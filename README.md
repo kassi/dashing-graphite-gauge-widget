@@ -42,6 +42,10 @@ Each value above the upper limit given will be coloured in the last colour given
 
 The first entry should start with limit 0 (assuming that gauge values don't go below zero).
 
+### Screen Shot
+
+![Gauge Widget](http://www.kluks.de/uploads/files/dashing-graphite-gauge-widget.png)
+
 ## Authors
 
 Based on [Erik Dasque's](https://github.com/edasque) graphite text widget
