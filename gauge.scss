@@ -21,8 +21,7 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   }
   .sparkline
   {
-        vertical-align: baseline;
-
+    vertical-align: baseline;
   }
   .title {
     color: $title-color;
@@ -47,7 +46,7 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   }
   .value {
     color: $value-color;
-    font-size:2.5em;
+    font-size:4m;
     text-transform: lowercase;
   }
 
