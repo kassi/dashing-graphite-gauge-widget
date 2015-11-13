@@ -18,7 +18,11 @@ class Dashing.Gauge extends Dashing.Widget
     else
       @debug = false
 
-
+    # use the data-from property in the widget tag to indicate the time range (Default: 7d)
+    if typeof @get('from') isnt "undefined"
+      @from = (@get('from'))
+    else
+      @from = "7d"
 
     # use the data-unit property in the widget tag to indicate the unit to display (Default:ms)
     if typeof @get('unit') isnt "undefined"
@@ -68,7 +72,7 @@ class Dashing.Gauge extends Dashing.Widget
     graph_data_url = "#{@graphite_host}/render?format=json#{@encoded_target}"
     console.log graph_data_url if @debug
     $.getJSON graph_data_url,
-      from: '-7d'
+      from: '-' + @from
       until: 'now',
       renderResults.bind(@)
 
@@ -78,7 +82,7 @@ class Dashing.Gauge extends Dashing.Widget
     graph_data_url = "#{@graphite_host}/render?format=json#{target}"
 
     $.getJSON graph_data_url,
-      from: '-7d'
+      from: '-' + @from
       until: 'now',
       renderSparkline.bind(@)
 
@@ -88,12 +92,13 @@ class Dashing.Gauge extends Dashing.Widget
 
     if dataset.length>1
       $(@node).find(".sparkline-chart").sparkline(dataset, {
-      type: 'line',
-      chartRangeMin: 0,
-      drawNormalOnTop: true,
-      normalRangeMax: 3000,
-      width:'12em',
-      normalRangeColor: '#336699'})
+        type: 'line',
+        chartRangeMin: 0,
+        drawNormalOnTop: true,
+        normalRangeMax: 3000,
+        width:'12em',
+        normalRangeColor: '#336699'})
+      $(@node).find(".sparkline-label").text("#{@from} ")
     else
       $(@node).find(".sparkline").hide()
 
