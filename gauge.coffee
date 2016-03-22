@@ -104,7 +104,12 @@ class Dashing.Gauge extends Dashing.Widget
 
   renderResults = (data) ->
     console.log data if @debug
-    dataLatest = data[0].datapoints[data[0].datapoints.length-1][0] || 0
+    dataLatest = 0
+    for point in data[0].datapoints.reverse()
+      unless point[0] == null
+        dataLatest = point[0]
+        break
+
     change_rate = 0
 
     $(@node).find(".change-rate i").removeClass("icon-arrow-up").removeClass("icon-arrow-down")
