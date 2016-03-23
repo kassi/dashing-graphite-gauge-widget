@@ -139,7 +139,7 @@ class Dashing.Gauge extends Dashing.Widget
     if isNaN dataLatest
       $(@node).find(".value").text("N/A").fadeOut().fadeIn()
     else
-      $(@node).find(".value").html("#{dataLatest}<span style='font-size:.3em;'>#{unit}</span>").fadeOut().fadeIn()
+      $(@node).find(".value").html("#{dataLatest.toLocaleString()}<span style='font-size:.3em;'>#{unit}</span>").fadeOut().fadeIn()
       colors = _.map(@get('colors').split(","), (elem) -> elem.split(":"))
       color = getColorFromValue(colors, dataLatest)
       $(@node).fadeOut().css('background-color', color).fadeIn()
