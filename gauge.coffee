@@ -96,7 +96,7 @@ class Dashing.Gauge extends Dashing.Widget
         chartRangeMin: 0,
         drawNormalOnTop: true,
         normalRangeMax: 3000,
-        width:'12em',
+        width:'10em',
         normalRangeColor: '#336699'})
       $(@node).find(".sparkline-label").text("#{@from} ")
     else
@@ -139,10 +139,13 @@ class Dashing.Gauge extends Dashing.Widget
     if isNaN dataLatest
       $(@node).find(".value").text("N/A").fadeOut().fadeIn()
     else
-      $(@node).find(".value").html("#{dataLatest.toLocaleString()}<span style='font-size:.3em;'>#{unit}</span>").fadeOut().fadeIn()
+      value = dataLatest.toLocaleString()
+      sizeClass = getSizeClassForValue(value)
+      $(@node).find(".value").html("#{value}<span style='font-size:.3em;'>#{unit}</span>").fadeOut().fadeIn()
       colors = _.map(@get('colors').split(","), (elem) -> elem.split(":"))
       color = getColorFromValue(colors, dataLatest)
       $(@node).fadeOut().css('background-color', color).fadeIn()
+      $(@node).find(".value").addClass(sizeClass)
 
     $(@node).find(".change-rate span").text("#{change_rate}")
     $(@node).find(".change-rate span").fadeOut().fadeIn()
@@ -164,6 +167,9 @@ class Dashing.Gauge extends Dashing.Widget
       value2 = getValueFromTupel(colors[index+1])
       ratio = (val - value1) / (value2 - value1)
       getGradientColor(color1, color2, ratio)
+
+  getSizeClassForValue = (val) ->
+    "length#{val.length}"
 
   hex = (x) ->
     y = x.toString(16)
