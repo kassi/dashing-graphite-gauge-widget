@@ -73,7 +73,7 @@ class Dashing.Gauge extends Dashing.Widget
     console.log graph_data_url if @debug
     $.getJSON graph_data_url,
       from: '-' + @from
-      until: 'now',
+      until: '-6min',
       renderResults.bind(@)
 
   updateSparkline: ->
@@ -83,7 +83,7 @@ class Dashing.Gauge extends Dashing.Widget
 
     $.getJSON graph_data_url,
       from: '-' + @from
-      until: 'now',
+      until: '-6min',
       renderSparkline.bind(@)
 
   renderSparkline = (data) ->
